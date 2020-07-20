@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"log"
 	"net/http"
 	"path/filepath"
 )
@@ -23,7 +24,12 @@ func (httpHandler *HttpHandler) Tiles(w http.ResponseWriter, r *http.Request) {
 	y, _ := r.URL.Query()["y"]
 	layer, _ := r.URL.Query()["layer"]
 	tmpDir := filepath.FromSlash(httpHandler.RootDirectory)
-	http.ServeFile(w, r, filepath.Join(tmpDir, "/"+layer[0]+"/"+x[0]+"/"+y[0]+"/"+z[0]))
+	tmpDir = filepath.Join(tmpDir,layer[0])
+	tmpDir = filepath.Join(tmpDir,x[0])
+	tmpDir = filepath.Join(tmpDir,y[0])
+	tmpDir = filepath.Join(tmpDir,z[0])
+	log.Print(tmpDir)
+	http.ServeFile(w, r, tmpDir)
 
 }
 func (httpHandler *HttpHandler) NewLogger(next http.Handler) *HttpHandler {
