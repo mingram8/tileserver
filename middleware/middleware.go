@@ -27,7 +27,7 @@ func (httpHandler *HttpHandler) Tiles(w http.ResponseWriter, r *http.Request) {
 	tmpDir := filepath.FromSlash(httpHandler.RootDirectory)
 	log.Print(tmpDir)
 	log.Print(filepath.Join(tmpDir, "/"+layer[0]+"/"+x[0]+"/"+y[0]+"/"+z[0]+".png"))
-	http.ServeFile(w, r, filepath.Join(tmpDir, "/"+layer[0]+"/"+x[0]+"/"+y[0]+"/"+z[0]+".png"))
+	http.ServeFile(w, r, filepath.Join(tmpDir, "/"+layer[0]+"/"+x[0]+"/"+y[0]+"/"+z[0]))
 
 }
 func (httpHandler *HttpHandler) NewLogger(next http.Handler) *HttpHandler {
