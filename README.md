@@ -8,6 +8,8 @@ For example:
 
 ./cmd --directory=/Users/mingram
 
+Make sure to not have a trailing slash on the directory command. 
+
 There's 2 endpoints. 
 
 `/heath` will return a 200 and "Ok" if the server is up and running.
